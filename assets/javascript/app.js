@@ -1,11 +1,12 @@
 
-startTimer() 
+// startTimer() 
 
 function startTimer() {
     setTimeout(startTimer, 1000 * 60);
     console.log("Timer Started");
 
-
+    $("#startGame").on("click", startTimer); 
+}
 function check() {
 
     var question1 = document.quiz.question1.value;
@@ -23,7 +24,8 @@ function check() {
         correct++;
     }
 
-    var messages = [ "Well La-Di-Freakin-Da!!", "Well Isn't That Special", "You Need More Cowbell"];
+    var messages = [ "You Know Your Stuff", "Not Terrible, But I'm Still Judging You", "You're missing something"];
+    var gifs = ["assets/images/win.gif", "assets/images/place.gif", "assets/images/lost.gif"]
     var range;
 
     if (correct < 1) {
@@ -41,11 +43,12 @@ function check() {
 
     document.getElementById("message").innerHTML = messages[range];
     document.getElementById("number_correct").innerHTML = "Correct Answers:  " + correct;
+    document.getElementById("gif").src=gifs[range];
 }
 
 $("#submit").on("click", check); 
 
-}
+
 
 
 
